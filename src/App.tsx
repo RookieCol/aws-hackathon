@@ -1,7 +1,15 @@
-export default function App(): JSX.Element {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Dashboard from '@/components/Dashboard'
+import { TooltipProvider } from '@/components/ui/tooltip'
+
+export default function App() {
   return (
-    <main>
-      <h1 className="text-3xl font-bold">App</h1>
-    </main>
+    <Router>
+      <TooltipProvider>
+        <Routes>
+          <Route index path="/" element={<Dashboard />} />
+        </Routes>
+      </TooltipProvider>
+    </Router>
   )
 }
