@@ -1,13 +1,5 @@
-import { Link } from 'react-router-dom'
-import {
-  Package2,
-  Home,
-  ShoppingCart,
-  Package,
-  Users2,
-  LineChart,
-  Settings,
-} from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { Home, User, Plus } from 'lucide-react'
 import {
   Tooltip,
   TooltipContent,
@@ -16,49 +8,21 @@ import {
 
 export default function Sidebar() {
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
-      <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
-        <Link
-          to="#"
-          className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-        >
-          <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
-          <span className="sr-only">Acme Inc</span>
-        </Link>
+    <>
+      <nav className="flex flex-col items-center justify-center sm:justify-start gap-10 sm:gap-4 px-2 sm:py-5">
+        <TooltipLink to="/" icon={<Home className="h-5 w-5" />} label="Home" />
         <TooltipLink
-          to="#"
-          icon={<Home className="h-5 w-5" />}
-          label="Dashboard"
+          to="/profile"
+          icon={<User className="h-5 w-5" />}
+          label="Profile"
         />
         <TooltipLink
-          to="#"
-          icon={<ShoppingCart className="h-5 w-5" />}
-          label="Orders"
-        />
-        <TooltipLink
-          to="#"
-          icon={<Package className="h-5 w-5" />}
-          label="Products"
-        />
-        <TooltipLink
-          to="#"
-          icon={<Users2 className="h-5 w-5" />}
-          label="Customers"
-        />
-        <TooltipLink
-          to="#"
-          icon={<LineChart className="h-5 w-5" />}
-          label="Analytics"
+          to="/create"
+          icon={<Plus className="h-5 w-5" />}
+          label="Create Pool"
         />
       </nav>
-      <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-        <TooltipLink
-          to="#"
-          icon={<Settings className="h-5 w-5" />}
-          label="Settings"
-        />
-      </nav>
-    </aside>
+    </>
   )
 }
 
@@ -71,15 +35,17 @@ function TooltipLink({
   icon: React.ReactNode
   label: string
 }) {
+  const { pathname } = useLocation()
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Link
           to={to}
-          className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+          className={`flex sm:h-9 sm:w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8 gap-3 ${pathname === to ? 'px-3 py-1 sm:p-0 bg-muted text-foreground pointer-events-none' : ''}`}
         >
           {icon}
-          <span className="sr-only">{label}</span>
+          <span className="sm:hidden">{label}</span>
         </Link>
       </TooltipTrigger>
       <TooltipContent side="right">{label}</TooltipContent>
