@@ -6,11 +6,11 @@ Zero Hunger Hackathon
 
 https://main.d16txf22ut844t.amplifyapp.com
 
-### Sci protocol - contracts:
+### Food Chain - contracts:
 
 https://github.com/salviega/food-chain-contracts
 
-### Sci protocol - backend:
+### Food Chain - backend:
 
 XXX
 
@@ -39,6 +39,8 @@ yarn dev
 ## Authors 🏗
 
 [chrisarevalo11](https://github.com/chrisarevalo11)
+
+[cryptosteer](https://github.com/cryptosteer)
 
 [RookieCol](https://github.com/RookieCol)
 
