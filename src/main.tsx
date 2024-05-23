@@ -6,9 +6,9 @@ import Providers from './config/providers.tsx'
 import '@rainbow-me/rainbowkit/styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Providers>
-      <App />
-    </Providers>
-  </React.StrictMode>,
+	<React.StrictMode>
+		<Providers>
+			<App />
+		</Providers>
+	</React.StrictMode>
 )
